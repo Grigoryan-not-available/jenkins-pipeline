@@ -1,0 +1,76 @@
+pipeline {
+    agent any
+    
+    environment {
+        PROJECT_NAME = "Test"
+        OWNER = "Ihorka"
+    }
+
+    stages {
+        stage('1-Build') {
+            steps {
+                echo "Start of Stage Build"
+                echo "Building......."
+                echo "End of Stage Build"
+            }
+        }
+        stage('2-Test') {
+            steps {
+                echo "Start of Stage Test"
+                echo "Testing......."
+                echo "Hello ${PROJECT_NAME}"
+                echo "End of Stage Build"
+            }
+        }
+        stage('3-Deploy') {
+            steps {
+                echo "Start of Stage Deploy"
+                echo "Deploying......."
+                echo "Owner = ${OWNER}"
+                echo "End of Stage Build"
+            }
+        }
+   }
+}
+
+/*pipeline {
+    agent { 
+        docker { 
+            image 'python:latest'
+        }
+    }
+
+    stages {
+        stage('Biuld') {
+            steps {
+                echo 'Start-Build'
+                echo "Building..." 
+                echo "End-Build"
+            }
+        }
+        stage('Test'){
+            steps {
+                echo "Start-Test"
+                echo "testing..."
+                sh '''
+                    echo "test1"
+                    echo "test2"
+                    echo "kek"
+                '''
+                echo "End-Test"
+            }
+        }
+        stage('Deploy'){
+            steps {
+                echo "Start-Deploy"
+                echo "Deploying..."
+                echo "End-Deploy"
+            }
+        }
+        stage('Node'){
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
+}*/
